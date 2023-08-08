@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 const Login = () => {
@@ -47,6 +48,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData)
   };
 
   return (
@@ -57,7 +59,7 @@ const Login = () => {
         <div className=' w-32 h-0.5 bg-red-500 rounded-lg mt-6 mb-12' />
       </div>
       <div>
-        <div className='flex items-center flex-row justify-between'>
+        <div className='flex items-center flex-row justify-around'>
           <div className=' ml-52'>
             <span className=' text-xl mb-5' >New Customer</span>
             <div className=' w-5/6 h-px bg-slate-500 mb-5' />

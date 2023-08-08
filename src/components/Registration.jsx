@@ -68,6 +68,7 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData)
 
     const apiUrl = 'YOUR_API_ENDPOINT';
     fetch(apiUrl, {
