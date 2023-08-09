@@ -21,8 +21,8 @@ const ProductEdit = () => {
                 <span className=' text-sm mt-5 mb-3'>Discription</span>
                 <input type="text" name="discription" value={''} className=' w-80 h-10 border-2 border-slate-400 rounded-md' />
 
-                <span className=' text-sm mt-5 mb-3'>First Name*</span>
-                <input type="text" name="firstName" value={''} className=' w-80 h-10 border-2 border-slate-400 rounded-md' />
+                <label className='mt-5 mb-3'>Choose a File</label>
+                <input type="file" name="file" value={''} className='' />
 
                 <div className='flex flex-row mt-9 justify-between w-60'>
                     <button type="submit" className=' w-24 h-10 bg-green-500 text-white font-semibold rounded '>Save</button>
