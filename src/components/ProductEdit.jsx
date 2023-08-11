@@ -1,18 +1,14 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-const ProductEdit = ({ onchange}) => {
+const ProductEdit = () => {
 
-    const [FileUploaded, setFileUploaded] = useState(false);
+    const [selectedFileName, setSelectedFileName] = useState('Choose File');
 
-    const handleFileChange = (e) => {
-        const selectedFile = e.target.files[0];
-        if(selectedFile) {
-            setFileUploaded(true);
-            onchange(selectedFile)
-        }
-    }
-
+    const handleFileChange = (event) => {
+      const fileName = event.target.files[0]?.name || 'Choose File';
+      setSelectedFileName(fileName);
+    };
 
     return (
         <>
@@ -33,12 +29,13 @@ const ProductEdit = ({ onchange}) => {
                 <span className=' text-sm mt-5 mb-3'>Discription</span>
                 <input type="text" name="discription" value={''} className=' w-80 h-10 border-2 border-slate-400 rounded-md' />
 
-                <label className='mt-5 mb-3 block text-sm font-medium text-gray-700'>
-                    {FileUploaded ? 'File Uploaded':'Upload File'}
-                    Choose a File
-                    <input type="file" name="file" className='hidden' onChange={handleFileChange} />
-                    {FileUploaded && (<span className='ml-2 text-green-500'>✓</span>)}
-                </label>
+                <div className="flex flex-row justify-around  mt-16 mb-3 w-80">
+                    <input type="file" id="fileInput" className="absolute opacity-0 w-full h-full cursor-pointer" onChange={handleFileChange} />
+                    <button className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded cursor-pointer">
+                        Upload
+                    </button>
+                    <p className=' border-2 border-slate-400 w-72 h-10 flex items-center rounded'>&nbsp;{selectedFileName}</p>
+                </div>
 
 
                 <div className='flex flex-row mt-9 justify-between w-60'>
