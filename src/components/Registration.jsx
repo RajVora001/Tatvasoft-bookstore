@@ -1,7 +1,15 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../state/slices/registrationSlice'
 
 const Registration = () => {
+
+  const dispatch = useDispatch()
+  const addNewUser = (payload) => {
+    dispatch(addUser(payload));
+    console.log(payload)
+  }
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -68,7 +76,10 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData)
+    console.log(formData);
+
+    addNewUser(formData)
+    
 
     const apiUrl = 'YOUR_API_ENDPOINT';
     fetch(apiUrl, {

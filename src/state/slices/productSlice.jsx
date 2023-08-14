@@ -8,7 +8,9 @@ const product = createSlice({
             state.push(action.payload);
             console.log(action.payload);
         },
-        removeProduct (state, action) {},
+        removeProduct (state, action) {
+            state.slice(action.payload,1)
+        },
         editProduct (state, action) {},
     }
 })

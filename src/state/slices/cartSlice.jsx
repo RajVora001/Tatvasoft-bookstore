@@ -20,7 +20,6 @@ const cartSlice = createSlice({
     },
 })
 
-console.log(cartSlice.actions)
 
 export default cartSlice;
 
