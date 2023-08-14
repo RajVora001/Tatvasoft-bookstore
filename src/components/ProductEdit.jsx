@@ -31,15 +31,15 @@ const ProductEdit = () => {
 
                 <div className="flex flex-row justify-around  mt-16 mb-3 w-80">
                     <input type="file" id="fileInput" className="absolute opacity-0 w-full h-full cursor-pointer" onChange={handleFileChange} />
-                    <button className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded cursor-pointer">
+                    <button className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded cursor-pointer font-semibold">
                         Upload
                     </button>
                     <p className=' border-2 border-slate-400 w-72 h-10 flex items-center rounded'>&nbsp;{selectedFileName}</p>
                 </div>
 
 
-                <div className='flex flex-row mt-9 justify-between w-60'>
-                    <button type="submit" className=' w-24 h-10 bg-green-500 text-white font-semibold rounded '>Save</button>
+                <div className='flex flex-row mt-9 justify-around w-80'>
+                    <button type="submit" className=' w-24 h-10 bg-green-500 text-white font-semibold rounded'>Save</button>
                     <button className=' w-24 h-10 bg-red-500 text-white font-semibold rounded '>Cancel</button>
                 </div>
 

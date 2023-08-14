@@ -8,6 +8,7 @@ import Registration from './components/Registration';
 import AllRoutes from './routes/AllRoutes';
 import ProductEdit from './components/ProductEdit';
 import ProductHome from './components/ProductHome';
+import Card from './components/Card'
 
 
 
@@ -16,7 +17,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <ProductEdit />
+      <AllRoutes />
       <Footer />
     </>
   );

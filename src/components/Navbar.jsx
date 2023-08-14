@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import logo from '../assets/images/site-logo.svg';
 import cart from '../assets/images/cart.png'
 import search from '../assets/images/search.png'
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 const Navbar = () => {
-  const [num, setNum] = useState('0');
+  
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState([]);
 
@@ -17,6 +18,10 @@ const Navbar = () => {
     ));
   };
 
+  const data = useSelector((state)=>{
+    return state.carts;
+  })
+
   return (
     <>
       <div className='w-full h-2 bg-red-500' />
@@ -27,10 +32,11 @@ const Navbar = () => {
           <a href="#" className='text-red-500 text-base'>Register</a>
           <button className='ml-5 mr-6 pl-1 flex flex-row justify-center items-center h-9 w-24 rounded border-2 border-slate-700 bg-slate-200 '>
             <img src={cart} alt="cart" className='mr-2' />
-            {num} Cart
+            {data} Cart
           </button>
         </div>
       </nav>
+      <div>
       <div className='w-full h-20 bg-slate-200 flex flex-row justify-center items-center mb-12'>
         <input
           type="text"
@@ -53,6 +59,7 @@ const Navbar = () => {
             ))}
           </ul>
         )}
+      </div>
       </div>
     </>
   );
