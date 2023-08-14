@@ -5,7 +5,7 @@ const login = createSlice({
     initialState: false,
     reducers: {
         userLogin(state, action) {
-            if (state === false) {
+            if (state == true) {
                 state = true;
                 console.log(action.state);
             }
@@ -15,7 +15,7 @@ const login = createSlice({
         },
 
         userLogout(state, action) {
-            if (state === true) {
+            if (state == true) {
                 state = false;
                 console.log(action.state);
             }
@@ -28,3 +28,4 @@ const login = createSlice({
 
 
 export default login;
+export const {userLogin, userLogout} = login.actions

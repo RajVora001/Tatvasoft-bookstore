@@ -3,7 +3,7 @@ import logo from '../assets/images/site-logo.svg';
 import cart from '../assets/images/cart.png'
 import search from '../assets/images/search.png'
 import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   
@@ -29,8 +29,8 @@ const Navbar = () => {
       <nav className='flex flex-row h-24 justify-between items-center'>
         <img src={logo} alt="logo" className=' w-48 ml-8'/>
         <div className='flex flex-row'>
-          <Link relative='./login' className='text-red-500 text-base'>Login</Link>&nbsp;|&nbsp;
-          <Link to='/registration' className='text-red-500 text-base'>Register</Link>
+          <a href='/login' className='text-red-500 text-base'>Login</a>&nbsp;|&nbsp;
+          <a href='/registration' className='text-red-500 text-base'>Register</a>
           <button className='ml-5 mr-6 pl-1 flex flex-row justify-center items-center h-9 w-24 rounded border-2 border-slate-700 bg-slate-200 '>
             <img src={cart} alt="cart" className='mr-2' />
             {data} Cart

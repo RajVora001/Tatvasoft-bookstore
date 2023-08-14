@@ -1,8 +1,16 @@
 import React from 'react'
 import { Link, BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { userLogin } from '../state/slices/loginSlice'
 
 const Login = () => {
+
+  const dispatch = useDispatch()
+  const loginUser = (payload) => {
+    console.log(payload);
+    dispatch(userLogin(payload));
+  }
 
   const [formData, setFormData] = useState({
     email: '',
@@ -14,28 +22,36 @@ const Login = () => {
     password: '',
   });
 
-  const validateForm = () => {
-    const { email, password } = formData;
-    let errors = {};
-
-    // Validation rules, add more rules as needed
-    if (!email.trim()) {
-      errors.email = 'Email is required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
-      errors.email = 'Invalid email address';
+  const validateEmail = (value) => {
+    if (!value) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: 'Email is required',
+      }));
+      return false;
     } else {
-      errors.email = '';
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: '',
+      }));
+      return true;
     }
+  };
 
-    if (!password.trim()) {
-      errors.password = 'Password is required';
-    } else if (password.length < 6) {
-      errors.password = 'Password must be at least 6 characters long';
+  const validatePassword = (value) => {
+    if (!value) {
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        password: 'Password is required',
+      }));
+      return false;
     } else {
-      errors.password = '';
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        password: '',
+      }));
+      return true;
     }
-
-    setFormErrors(errors);
   };
 
   const handleChange = (e) => {
@@ -48,7 +64,22 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData)
+   
+    const isEmailValid = validateEmail(formData.email);
+    const isPasswordValid = validatePassword(formData.password);
+
+    if (isEmailValid && isPasswordValid == true) {
+      // login logic here
+    
+      setFormData({
+        email:isEmailValid,
+        password:isPasswordValid,
+
+      });
+      console.log(formData)
+
+      console.log('Login successful');
+    }
   };
 
   return (
